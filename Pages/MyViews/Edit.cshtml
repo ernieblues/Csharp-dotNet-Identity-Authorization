@@ -1,0 +1,50 @@
+﻿@page
+@model IdentityCore.Pages.MyViews.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>MyView</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MyView.MyViewId" />
+            <div class="form-group">
+                <label asp-for="MyView.UserId" class="control-label"></label>
+                <select asp-for="MyView.UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="MyView.UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MyView.Column1" class="control-label"></label>
+                <input asp-for="MyView.Column1" class="form-control" />
+                <span asp-validation-for="MyView.Column1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MyView.Column2" class="control-label"></label>
+                <input asp-for="MyView.Column2" class="form-control" />
+                <span asp-validation-for="MyView.Column2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MyView.Column3" class="control-label"></label>
+                <input asp-for="MyView.Column3" class="form-control" />
+                <span asp-validation-for="MyView.Column3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

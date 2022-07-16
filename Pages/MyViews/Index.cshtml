@@ -1,0 +1,54 @@
+﻿@page
+@model IdentityCore.Pages.MyViews.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MyView[0].User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MyView[0].Column1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MyView[0].Column2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MyView[0].Column3)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.MyView) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Column1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Column2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Column3)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.MyViewId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.MyViewId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.MyViewId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

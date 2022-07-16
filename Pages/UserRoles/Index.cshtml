@@ -1,0 +1,42 @@
+﻿@page
+@model IdentityCore.Pages.UserRoles.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationUserRole[0].User.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationUserRole[0].Role.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ApplicationUserRole) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role.Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-userid="@item.UserId" asp-route-roleid="@item.RoleId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.UserId">Details</a> |
+                <a asp-page="./Delete" asp-route-userid="@item.UserId" asp-route-roleid="@item.RoleId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
